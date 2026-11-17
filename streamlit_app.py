@@ -227,6 +227,9 @@ PROMPT_TEMPLATES = {
             ("〔衍生〕星座(生日 → 星座,巢狀 IIF)", "幫『客戶』建衍生(derive)標籤『<名稱,例如 星座>』,依生日欄位『<生日標籤,例如 date_of_birth>』的月份與日期,對應到 12 個西洋星座(用標準日期範圍,例如 牡羊座 3/21–4/19、金牛座 4/20–5/20…雙魚座 2/19–3/20)。請用巢狀 IIF 搭配 MONTH()、DAY() 這些公式函式寫(先 list_db_functions 確認函式與語法),不要用 SQL 的 CASE WHEN。"),
             ("〔指標〕把指標包成標籤", "幫『客戶』建 metric 型標籤『<名稱,例如 年度購買金額>』,直接引用已建好的指標『<指標名>』(把指標包成一個標籤,方便放進行動資料輸出或當分群條件)。"),
             ("〔SQL〕用自訂 SQL 算標籤", "幫『客戶』建 sql 型標籤『<名稱>』,用這段我自己寫的 SQL:<你的 SQL>(要點:SELECT 客戶主鍵 + 一個計算欄位,FROM 某表;大小寫混合的表 / 欄位名記得加雙引號)。"),
+            ("〔自訂屬性〕定義標籤要填的欄位", "在資料來源『<資料來源名>』上,替標籤新增自訂屬性:『<名稱,例如 負責人>』是使用者,『<名稱,例如 認證狀態>』是單選(選項 <例如 待審、已認證>),『<名稱,例如 說明文件>』是網址。先列出這個資料來源現有的自訂屬性給我看,已經有的不要重建。"),
+            ("〔自訂屬性〕替標籤填屬性值", "把標籤『<標籤名>』的自訂屬性『<屬性名>』設成 <值>,其他屬性不要動。"),
+            ("〔自訂屬性〕依屬性找標籤", "列出自訂屬性『<屬性名>』是 <值> 的標籤,再列出『<屬性名>』還沒填的標籤。"),
         ],
         "🎯 分群(篩出一群對象)": [
             ("〔進階〕自訂多條件分群", "建分群『<名稱>』,條件:<條件描述>。(規則:同一群內的條件是 AND、可另設一組排除;事件次數用『發生次數在 X 到 Y 之間』;標籤範圍用『介於 X 到 Y』、等於某值用『是 X』、沒有值用『沒有值』。)"),
@@ -400,6 +403,9 @@ PROMPT_TEMPLATES = {
             ("[derive] Zodiac (birthday → sign, nested IIF)", "Give 'Customer' a derive Trait '<name, e.g. Zodiac>' mapping the birthday '<birthday trait, e.g. date_of_birth>' (its month + day) to the 12 western zodiac signs by the standard date ranges (Aries 3/21–4/19, Taurus 4/20–5/20 … Pisces 2/19–3/20). Write it with nested IIF plus the MONTH() and DAY() functions (call list_db_functions first for the exact syntax), not a raw SQL CASE WHEN."),
             ("[metric] Wrap a metric as a trait", "Give 'Customer' a metric Trait '<name, e.g. Annual Spend>' that wraps the existing Metric '<metric name>' (so the metric can be output in an action dataset or used as a segment condition)."),
             ("[sql] Custom-SQL Trait", "Give 'Customer' a sql Trait '<name>' using this SQL I write: <your SQL> (the point: SELECT the customer primary key + one computed column, FROM some table; double-quote mixed-case names)."),
+            ("[custom attribute] Define fields for traits", "On the data source '<data source name>', add custom attributes for its Traits: '<name, e.g. Owner>' is a user, '<name, e.g. Certification>' is single select (options <e.g. pending, certified>), '<name, e.g. Docs>' is a URL. First show me the custom attributes this data source already has, and do not create one that exists."),
+            ("[custom attribute] Fill a trait's value", "Set the custom attribute '<attribute name>' of the Trait '<trait name>' to <value>, and leave its other attributes as they are."),
+            ("[custom attribute] Find traits by attribute", "List the Traits whose custom attribute '<attribute name>' is <value>, then the Traits where '<attribute name>' is not filled in yet."),
         ],
         "🎯 Segment (a group)": [
             ("[advanced] Custom multi-condition segment", "Build a Segment '<name>' with conditions: <conditions>. (Rules: conditions within a group are AND'd; you can add an exclude group; for events say 'event count between X and Y'; for a trait range say 'between X and Y', for equality 'is X', for missing 'has no value'.)"),
